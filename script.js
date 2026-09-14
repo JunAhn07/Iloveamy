@@ -40,22 +40,27 @@ const reasonText = document.getElementById("reasonText");
 
 // Placeholder reasons — edit this list with your own! ♡
 const reasons = [
-    "The way you laugh at your own jokes before you even finish them.",
-    "You make even boring days feel like an adventure.",
-    "Your smile is honestly my favourite thing to look at.",
-    "You always know exactly what to say to make me feel better.",
-    "The way your eyes light up when you talk about things you love.",
-    "You're kind to people even when no one's watching.",
+    "The way you smile makes my whole day brighter.",
+    "You make even the most boring days fun.",
+    "Your eyes are something I can look into forever.",
+    "You somehow know how to always make me feel better.",
+    "The way your eyes light up when you see me makes my heart melt.",
+    "You're kind to me even when you don't have to.",
     "Pastel purple tulips will forever remind me of you.",
-    "You give the best hugs, no contest.",
-    "You never let me take myself too seriously.",
-    "The little way you scrunch your nose when you're concentrating.",
-    "You make ordinary moments feel like core memories.",
-    "You believe in me even when I don't believe in myself.",
-    "Your voice is the most calming sound in the world to me.",
+    "You always make your hugs feel so good.",
+    "You never let me feel bad about myself.",
+    "The way you tell me that you like something is so cute.",
+    "You make ordinary moments feel like important memories.",
+    "You support me through all my lowest moments.",
+    "Your voice is as sweet as candy.",
     "You're effortlessly the funniest person I know.",
     "I love how excited you get over the smallest things.",
-    "You make me want to be a better person, every single day."
+    "You make me want to always be a better person for you."
+    "I love the way you always listen to my interests."
+    "You make eating food with you taste so much better."
+    "Every colour in the world seems brighter with you."
+    "You're both perfect on the inside and outside."
+    "You're my Ae-sun to my Gwak-sik."
 ];
 
 let reasonPool = [];
