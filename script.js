@@ -55,12 +55,12 @@ const reasons = [
     "Your voice is as sweet as candy.",
     "You're effortlessly the funniest person I know.",
     "I love how excited you get over the smallest things.",
-    "You make me want to always be a better person for you."
-    "I love the way you always listen to my interests."
-    "You make eating food with you taste so much better."
-    "Every colour in the world seems brighter with you."
-    "You're both perfect on the inside and outside."
-    "You're my Ae-sun to my Gwak-sik."
+    "You make me want to always be a better person for you.",
+    "I love the way you always listen to my interests.",
+    "You make eating food with you taste so much better.",
+    "Every colour in the world seems brighter with you.",
+    "You're both perfect on the inside and outside.",
+    "You're my Ae-sun to my Gwak-sik.",
 ];
 
 let reasonPool = [];
