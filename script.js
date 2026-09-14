@@ -37,7 +37,6 @@ document.querySelectorAll("a").forEach(function (link) {
 
 const reasonButton = document.getElementById("reasonButton");
 const reasonText = document.getElementById("reasonText");
-const reasonCounter = document.getElementById("reasonCounter");
 
 // Placeholder reasons — edit this list with your own! ♡
 const reasons = [
@@ -118,13 +117,6 @@ if (reasonButton && reasonText) {
         reasonText.textContent = nextReason;
 
         reasonText.classList.add("pop");
-
-        if (reasonCounter) {
-
-            reasonCounter.textContent =
-                reasonsShown + " of " + reasons.length;
-
-        }
 
         reasonButton.textContent = "Give me another reason ♡";
 
