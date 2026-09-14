@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Open When... 💌</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="floating-hearts">
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+    </div>
+
+    <nav class="navbar">
+
+        <a href="index.html" class="nav-logo">♡ 예림</a>
+
+        <div class="nav-links">
+            <a href="love-letter.html">Love Letter</a>
+            <a href="pictures.html">My Favourite Pictures</a>
+            <a href="open-when.html" class="active">Open When...</a>
+            <a href="surprise.html">Surprise</a>
+        </div>
+
+    </nav>
+
+    <main class="page">
+
+        <p class="small-text">For whenever you need me ♡</p>
+
+        <h2>Open When...</h2>
+
+        <p class="page-subtitle">
+            Pick an envelope whenever you need a little reminder
+            that I love you.
+        </p>
+
+        <div class="envelope-grid">
+
+            <button
+                class="envelope"
+                data-title="Open when you're sad"
+                data-message="If you're reading this because you're sad, I wish I could make all that go away. You can always come to me no matter how you are feeling and I will always listen. I love you so much, 예림. Just know whatever you're going through, I'm in it with you. ♡">
+
+                <span class="envelope-icon">💌</span>
+                <span>Open when you're sad</span>
+
+            </button>
+
+            <button
+                class="envelope"
+                data-title="Open when you miss me"
+                data-message="I miss you too. Even when we're apart, you're always the only thing I think about. Just think about all the times we were close and holding each other. I promise soon I'll make the time we spent apart all worth it. ♡">
+
+                <span class="envelope-icon">💌</span>
+                <span>Open when you miss me</span>
+
+            </button>
+
+            <button
+                class="envelope"
+                data-title="Open when you can't sleep"
+                data-message="If you can't sleep, close your eyes and let me take care of you. Don't worry about anything else, be in the moment with me. Just me and you. Take a deep breath, and go to sleep knowing that I'm here for you and I love you more then anyone could ever love someone. Goodnight, my love. ♡">
+
+                <span class="envelope-icon">💌</span>
+                <span>Open when you can't sleep</span>
+
+            </button>
+
+            <button
+                class="envelope"
+                data-title="Open when you need reassurance"
+                data-message="In case you ever need a reminder: You are the woman of my dreams and I love you so much. You mean so much to me, and no one else could ever take your place. Don't ever forget it because I am all yours, 예림. ♡">
+
+                <span class="envelope-icon">💌</span>
+                <span>Open when you need reassurance</span>
+
+            </button>
+
+            <button
+                class="envelope"
+                data-title="Open when you need a smile"
+                data-message="How can a beautiful girl like you be frowning like that. Let me see that big pretty smile baby!. ♡">
+
+                <span class="envelope-icon">💌</span>
+                <span>Open when you need a smile</span>
+
+            </button>
+
+            <button
+                class="envelope"
+                data-title="Open when you need to know I love you"
+                data-message="I love you. I love you no matter what the day is or how far apart we are. I love you simply because you're you and nothing will ever change that. So take this kiss as a token of my love MWAH. ♡">
+
+                <span class="envelope-icon">💌</span>
+                <span>Open when you need to know I love you</span>
+
+            </button>
+
+        </div>
+
+        <a href="surprise.html" class="main-button">
+            There's one more thing... →
+        </a>
+
+    </main>
+
+    <!-- Letter popup -->
+
+    <div id="letterModal" class="letter-modal">
+
+        <div class="letter-popup">
+
+            <button id="closeLetter" class="close-letter">
+                ×
+            </button>
+
+            <div class="popup-heart">♡</div>
+
+            <h3 id="letterTitle">
+                Open when...
+            </h3>
+
+            <p id="letterMessage">
+                Your message will appear here.
+            </p>
+
+            <div class="popup-signature">
+                — Jun ♡
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
