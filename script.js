@@ -292,4 +292,100 @@ function createConfetti() {
 
     }
 
+   /* =========================================================
+   REASONS WHY I LOVE YOU
+========================================================= */
+
+const reasonButton = document.getElementById("reasonButton");
+
+const reasonText = document.getElementById("reasonText");
+
+const reasonNumber = document.getElementById("reasonNumber");
+
+
+const reasons = [
+
+    "I love how you can make even an ordinary day feel special.",
+
+    "I love your smile and how it can instantly make me happier.",
+
+    "I love how beautiful you are, inside and out.",
+
+    "I love talking to you, even when we're talking about the most random things.",
+
+    "I love how comfortable I feel when I'm with you.",
+
+    "I love the little things you do that you probably don't even realize I notice.",
+
+    "I love how you can make me laugh when I need it the most.",
+
+    "I love how caring and thoughtful you are.",
+
+    "I love hearing about your day and everything that's on your mind.",
+
+    "I love every memory we've made together.",
+
+    "I love the way you make me feel loved.",
+
+    "I love that I can be myself around you.",
+
+    "I love how special you make me feel.",
+
+    "I love your personality and all the little things that make you you.",
+
+    "I love how much happier my life feels with you in it.",
+
+    "I love that even when we're apart, you still feel close to my heart.",
+
+    "I love seeing you happy.",
+
+    "I love making you smile.",
+
+    "I love all the little moments we share.",
+
+    "I love you simply because you're you. ♡"
+
+];
+
+
+let currentReason = 0;
+
+
+if (reasonButton && reasonText && reasonNumber) {
+
+    reasonButton.addEventListener("click", function () {
+
+        currentReason++;
+
+        /*
+         * Once we reach the end of the list,
+         * start again from the beginning.
+         */
+
+        if (currentReason >= reasons.length) {
+
+            currentReason = 0;
+
+        }
+
+        reasonNumber.textContent =
+            `Reason #${currentReason + 1}`;
+
+        reasonText.classList.remove("reason-changing");
+
+        /*
+         * Force the animation to restart.
+         */
+
+        void reasonText.offsetWidth;
+
+        reasonText.textContent =
+            reasons[currentReason];
+
+        reasonText.classList.add("reason-changing");
+
+    });
+
+}
+
 }
