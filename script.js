@@ -61,6 +61,7 @@ const reasons = [
     "Every colour in the world seems brighter with you.",
     "You're both perfect on the inside and outside.",
     "You're my Ae-sun to my Gwak-sik.",
+    "I love the way you get me hard.",
 ];
 
 let reasonPool = [];
