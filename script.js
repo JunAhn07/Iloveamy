@@ -62,6 +62,15 @@ const reasons = [
     "You're both perfect on the inside and outside.",
     "You're my Ae-sun to my Gwak-sik.",
     "I love the way you get me hard.",
+    "I love the way you always play games with me.",
+    "You always make me feel seen.",
+    "I love the way you always ask me what I think too.",
+    "You look beautiful no matter the day.",
+    "Your presence is enough to light up my mood.",
+    "You love the parts of me that I can't love about myself.", 
+    "You care for me more then anyone else ever.",
+    "I love how you're good at league.",
+    "I love how appreciative you are of the things I do.",
 ];
 
 let reasonPool = [];
