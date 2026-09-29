@@ -38,7 +38,7 @@ document.querySelectorAll("a").forEach(function (link) {
 const reasonButton = document.getElementById("reasonButton");
 const reasonText = document.getElementById("reasonText");
 
-// Placeholder reasons — edit this list with your own! ♡
+// Placeholder reasons 
 const reasons = [
     "The way you smile makes my whole day brighter.",
     "You make even the most boring days fun.",
@@ -70,8 +70,13 @@ const reasons = [
     "You love the parts of me that I can't love about myself.", 
     "You care for me more then anyone else ever.",
     "I love how you're good at league.",
-    "I love how appreciative you are of the things I do.",
+    "I love how appreciative you are of the things I do for you.",
     "I love the way you make creampies feel so good.",
+    "You make playing 2v8 so fun.",
+    "You make me excited for our future.",
+    "You're like the light at the end of my tunnel.".
+    "I love ending the day off by relaxing in call with you.",
+    "You always make me look better in public.",
 ];
 
 let reasonPool = [];
