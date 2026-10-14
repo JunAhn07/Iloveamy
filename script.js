@@ -74,7 +74,7 @@ const reasons = [
     "I love the way you make creampies feel so good.",
     "You make playing 2v8 so fun.",
     "You make me excited for our future.",
-    "You're like the light at the end of my tunnel.".
+    "You're like the light at the end of my tunnel.",
     "I love ending the day off by relaxing in call with you.",
     "You always make me look better in public.",
 ];
