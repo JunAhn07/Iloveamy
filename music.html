@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Little Playlist ♡</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="music-home">
+
+    <div class="floating-hearts">
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+    </div>
+
+    <nav class="navbar">
+
+        <a href="index.html" class="nav-logo">♡ 예림</a>
+
+        <div class="nav-links">
+            <a href="love-letter.html">Love Letter</a>
+            <a href="pictures.html">My Favourite Pictures</a>
+            <a href="open-when.html">Open When...</a>
+            <a href="surprise.html">Surprise</a>
+            <a href="music.html" class="active">Music ♫</a>
+        </div>
+
+    </nav>
+
+    <main class="music-page">
+
+        <p class="music-intro">A little soundtrack for us ♡</p>
+
+        <section class="music-player">
+
+            <div class="player-top">
+                <span>♡ Just for you</span>
+                <span id="playingIndicator">READY TO PLAY</span>
+            </div>
+
+            <div class="album-frame">
+                <img
+                    id="albumCover"
+                    src="song-cover-1.jpg"
+                    alt="Album cover"
+                >
+
+                <button
+                    id="favouriteButton"
+                    class="favourite-button"
+                    aria-label="Favourite this song"
+                    aria-pressed="false"
+                    type="button"
+                >♡</button>
+            </div>
+
+            <div class="track-info">
+                <h1 id="songTitle">Dreamscape</h1>
+                <p id="songArtist">A song for you 💜</p>
+            </div>
+
+            <audio id="audioPlayer" preload="metadata"></audio>
+
+            <div class="progress-section">
+
+                <input
+                    type="range"
+                    id="progressBar"
+                    min="0"
+                    max="100"
+                    value="0"
+                    step="0.1"
+                    aria-label="Song progress"
+                >
+
+                <div class="time-labels">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+
+            </div>
+
+            <div class="playback-controls">
+
+                <button
+                    id="shuffleButton"
+                    type="button"
+                    aria-label="Shuffle songs"
+                    aria-pressed="false"
+                >⤨</button>
+
+                <button
+                    id="previousButton"
+                    type="button"
+                    aria-label="Previous song"
+                >|◀</button>
+
+                <button
+                    id="playButton"
+                    class="play-button"
+                    type="button"
+                    aria-label="Play music"
+                >▶</button>
+
+                <button
+                    id="nextButton"
+                    type="button"
+                    aria-label="Next song"
+                >▶|</button>
+
+                <button
+                    id="repeatButton"
+                    type="button"
+                    aria-label="Repeat current song"
+                    aria-pressed="false"
+                >↻</button>
+
+            </div>
+
+            <div class="playlist-heading">
+                <span>OUR LITTLE PLAYLIST</span>
+                <span id="trackCount">3 songs ♡</span>
+            </div>
+
+            <div id="playlist" class="playlist"></div>
+
+            <p class="player-footer">
+                Every song reminds me of you. ♡
+            </p>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
