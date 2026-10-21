@@ -407,4 +407,313 @@ function createConfetti() {
 
     }
 
+
+/* =========================================================
+   MUSIC PLAYER
+   All audio and cover files are in the repository root.
+========================================================= */
+
+const musicSongs = [
+    {
+        title: "Dreamscape",
+        artist: "A song for you 💜",
+        audio: "song1.mp3",
+        cover: "song-cover-1.jpg"
+    },
+    {
+        title: "Our Song",
+        artist: "A little memory ♡",
+        audio: "song2.mp3",
+        cover: "song-cover-2.jpg"
+    },
+    {
+        title: "Just Us",
+        artist: "For my 예림",
+        audio: "song3.mp3",
+        cover: "song-cover-3.jpg"
+    }
+];
+
+const musicAudio = document.getElementById("audioPlayer");
+const musicCover = document.getElementById("albumCover");
+const musicTitle = document.getElementById("songTitle");
+const musicArtist = document.getElementById("songArtist");
+const musicPlayButton = document.getElementById("playButton");
+const musicPreviousButton = document.getElementById("previousButton");
+const musicNextButton = document.getElementById("nextButton");
+const musicProgress = document.getElementById("progressBar");
+const musicCurrentTime = document.getElementById("currentTime");
+const musicDuration = document.getElementById("duration");
+const musicPlaylist = document.getElementById("playlist");
+const musicFavouriteButton = document.getElementById("favouriteButton");
+const musicShuffleButton = document.getElementById("shuffleButton");
+const musicRepeatButton = document.getElementById("repeatButton");
+const musicStatus = document.getElementById("playingIndicator");
+const musicTrackCount = document.getElementById("trackCount");
+
+let musicIndex = 0;
+let musicShuffle = false;
+let musicRepeat = false;
+let musicFavourites = new Set();
+
+function musicFormatTime(seconds) {
+    if (!Number.isFinite(seconds) || seconds < 0) {
+        return "0:00";
+    }
+
+    const minutes = Math.floor(seconds / 60);
+    const remainder = Math.floor(seconds % 60);
+
+    return `${minutes}:${String(remainder).padStart(2, "0")}`;
 }
+
+function musicRenderPlaylist() {
+    if (!musicPlaylist || !musicAudio) return;
+
+    musicPlaylist.replaceChildren();
+
+    musicSongs.forEach((song, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "playlist-track";
+
+        const isCurrent = index === musicIndex;
+        button.classList.toggle("active", isCurrent);
+
+        const cover = document.createElement("img");
+        cover.src = song.cover;
+        cover.alt = "";
+        cover.loading = "lazy";
+
+        const details = document.createElement("span");
+        details.className = "playlist-track-details";
+
+        const title = document.createElement("strong");
+        title.textContent = song.title;
+
+        const artist = document.createElement("small");
+        artist.textContent = song.artist;
+
+        const symbol = document.createElement("span");
+        symbol.className = "track-symbol";
+        symbol.textContent = isCurrent && !musicAudio.paused ? "♫" : "♡";
+
+        details.append(title, artist);
+        button.append(cover, details, symbol);
+
+        button.addEventListener("click", () => {
+            musicLoadSong(index);
+            musicPlay();
+        });
+
+        musicPlaylist.appendChild(button);
+    });
+
+    if (musicTrackCount) {
+        musicTrackCount.textContent = `${musicSongs.length} songs ♡`;
+    }
+}
+
+function musicUpdateFavourite() {
+    if (!musicFavouriteButton) return;
+
+    const active = musicFavourites.has(musicIndex);
+
+    musicFavouriteButton.classList.toggle("is-favourite", active);
+    musicFavouriteButton.setAttribute("aria-pressed", String(active));
+    musicFavouriteButton.textContent = active ? "♥" : "♡";
+}
+
+function musicLoadSong(index) {
+    if (!musicAudio || musicSongs.length === 0) return;
+
+    musicIndex = (index + musicSongs.length) % musicSongs.length;
+
+    const song = musicSongs[musicIndex];
+
+    musicAudio.src = song.audio;
+    musicCover.src = song.cover;
+    musicCover.alt = `Cover art for ${song.title}`;
+    musicTitle.textContent = song.title;
+    musicArtist.textContent = song.artist;
+
+    musicProgress.value = 0;
+    musicCurrentTime.textContent = "0:00";
+    musicDuration.textContent = "0:00";
+
+    musicUpdateFavourite();
+    musicRenderPlaylist();
+}
+
+async function musicPlay() {
+    if (!musicAudio) return;
+
+    try {
+        await musicAudio.play();
+    } catch (error) {
+        console.error("Unable to play this song:", error);
+
+        if (musicStatus) {
+            musicStatus.textContent = "CHECK AUDIO FILE";
+        }
+    }
+}
+
+function musicTogglePlay() {
+    if (!musicAudio) return;
+
+    if (musicAudio.paused) {
+        musicPlay();
+    } else {
+        musicAudio.pause();
+    }
+}
+
+function musicNext() {
+    if (musicSongs.length === 0) return;
+
+    if (musicShuffle && musicSongs.length > 1) {
+        let nextIndex;
+
+        do {
+            nextIndex = Math.floor(Math.random() * musicSongs.length);
+        } while (nextIndex === musicIndex);
+
+        musicLoadSong(nextIndex);
+    } else {
+        musicLoadSong(musicIndex + 1);
+    }
+
+    musicPlay();
+}
+
+function musicPrevious() {
+    if (!musicAudio) return;
+
+    if (musicAudio.currentTime > 3) {
+        musicAudio.currentTime = 0;
+        return;
+    }
+
+    musicLoadSong(musicIndex - 1);
+    musicPlay();
+}
+
+/* Run only on the page that contains the music player. */
+
+if (
+    musicAudio &&
+    musicCover &&
+    musicTitle &&
+    musicArtist &&
+    musicPlayButton &&
+    musicPreviousButton &&
+    musicNextButton &&
+    musicProgress
+) {
+    musicLoadSong(0);
+
+    musicPlayButton.addEventListener("click", musicTogglePlay);
+    musicNextButton.addEventListener("click", musicNext);
+    musicPreviousButton.addEventListener("click", musicPrevious);
+
+    musicAudio.addEventListener("play", () => {
+        musicPlayButton.textContent = "Ⅱ";
+        musicPlayButton.setAttribute("aria-label", "Pause music");
+
+        if (musicStatus) musicStatus.textContent = "NOW PLAYING";
+
+        musicRenderPlaylist();
+    });
+
+    musicAudio.addEventListener("pause", () => {
+        musicPlayButton.textContent = "▶";
+        musicPlayButton.setAttribute("aria-label", "Play music");
+
+        if (musicStatus) musicStatus.textContent = "PAUSED";
+
+        musicRenderPlaylist();
+    });
+
+    musicAudio.addEventListener("loadedmetadata", () => {
+        musicDuration.textContent = musicFormatTime(musicAudio.duration);
+    });
+
+    musicAudio.addEventListener("timeupdate", () => {
+        if (!Number.isFinite(musicAudio.duration) || musicAudio.duration <= 0) {
+            return;
+        }
+
+        musicProgress.value =
+            (musicAudio.currentTime / musicAudio.duration) * 100;
+
+        musicCurrentTime.textContent =
+            musicFormatTime(musicAudio.currentTime);
+
+        musicDuration.textContent =
+            musicFormatTime(musicAudio.duration);
+    });
+
+    musicProgress.addEventListener("input", () => {
+        if (Number.isFinite(musicAudio.duration) && musicAudio.duration > 0) {
+            musicAudio.currentTime =
+                (Number(musicProgress.value) / 100) * musicAudio.duration;
+        }
+    });
+
+    musicAudio.addEventListener("ended", () => {
+        if (musicRepeat) {
+            musicAudio.currentTime = 0;
+            musicPlay();
+        } else {
+            musicNext();
+        }
+    });
+
+    musicAudio.addEventListener("error", () => {
+        if (musicStatus) musicStatus.textContent = "AUDIO FILE NOT FOUND";
+    });
+
+    musicCover.addEventListener("error", () => {
+        musicCover.alt = "Cover image could not be loaded";
+    });
+
+    if (musicFavouriteButton) {
+        musicFavouriteButton.addEventListener("click", () => {
+            if (musicFavourites.has(musicIndex)) {
+                musicFavourites.delete(musicIndex);
+            } else {
+                musicFavourites.add(musicIndex);
+            }
+
+            musicUpdateFavourite();
+        });
+    }
+
+    if (musicShuffleButton) {
+        musicShuffleButton.addEventListener("click", () => {
+            musicShuffle = !musicShuffle;
+
+            musicShuffleButton.classList.toggle("is-active", musicShuffle);
+            musicShuffleButton.setAttribute(
+                "aria-pressed",
+                String(musicShuffle)
+            );
+        });
+    }
+
+    if (musicRepeatButton) {
+        musicRepeatButton.addEventListener("click", () => {
+            musicRepeat = !musicRepeat;
+
+            musicRepeatButton.classList.toggle("is-active", musicRepeat);
+            musicRepeatButton.setAttribute(
+                "aria-pressed",
+                String(musicRepeat)
+            );
+        });
+    }
+
+    musicRenderPlaylist();
+}
+
