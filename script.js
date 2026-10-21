@@ -415,19 +415,19 @@ function createConfetti() {
 
 const musicSongs = [
     {
-        title: "Dreamscape",
-        artist: "A song for you 💜",
+        title: "Heart to Heart",
+        artist: "When 2 become 1",
         audio: "song1.mp3",
         cover: "song-cover-1.jpg"
     },
     {
-        title: "Our Song",
-        artist: "A little memory ♡",
+        title: "Kiss me",
+        artist: "Favourite hello",
         audio: "song2.mp3",
         cover: "song-cover-2.jpg"
     },
     {
-        title: "Just Us",
+        title: "Apocalypse",
         artist: "For my 예림",
         audio: "song3.mp3",
         cover: "song-cover-3.jpg"
