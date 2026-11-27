@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>How Well Do You Know Me? 💜</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="floating-hearts">
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+    </div>
+
+    <nav class="navbar">
+
+        <a href="index.html" class="nav-logo">♡ 예림</a>
+
+        <div class="nav-links">
+            <a href="love-letter.html">Love Letter</a>
+            <a href="pictures.html">My Favourite Pictures</a>
+            <a href="open-when.html">Open When...</a>
+            <a href="reasons.html">Reasons I Love You</a>
+            <a href="music.html">Our Song</a>
+            <a href="quiz.html" class="active">Mini Game</a>
+            <a href="surprise.html">Surprise</a>
+        </div>
+
+    </nav>
+
+    <main class="page quiz-page">
+
+        <section class="quiz-card">
+
+            <div id="quizPlay">
+
+                <div class="quiz-progress">
+                    <div id="quizBar" class="quiz-progress-fill"></div>
+                </div>
+
+                <p id="quizCount" class="small-text"></p>
+
+                <h3 id="quizQuestion" class="quiz-question"></h3>
+
+                <div id="quizOptions" class="quiz-options"></div>
+
+                <p id="quizFeedback" class="quiz-feedback"></p>
+
+                <button id="quizNext" class="main-button quiz-next hidden">Next →</button>
+
+            </div>
+
+            <div id="quizResult" class="hidden">
+
+                <p class="small-text">All done ♡</p>
+
+                <h3 id="quizScore" class="quiz-score"></h3>
+
+                <p id="quizMessage" class="quiz-message"></p>
+
+                <button id="quizRestart" class="main-button quiz-next">Play again ♡</button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <div id="confetti"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
