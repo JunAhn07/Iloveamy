@@ -721,41 +721,56 @@ if (
    HOW WELL DO YOU KNOW ME?
 ========================================================= */
 
-// Edit these with your own questions ♡
-// "answer" is the position of the correct option, starting from 0
-// (0 = first option, 1 = second, 2 = third, 3 = fourth).
-// "note" is an optional cute message shown after she answers.
+
 const questions = [
     {
         question: "What's my favourite colour?",
-        options: ["Purple", "Blue", "Green", "Red"],
+        options: ["Black", "Blue", "Green", "Red"],
         answer: 0,
-        note: "Obviously. It's been your colour too."
+        note: "Of course! It's the only colour I wear!."
     },
     {
         question: "Where did we first meet?",
         options: ["School", "Online", "Through friends", "A cafe"],
-        answer: 1,
+        answer: 0,
         note: "The best thing that ever happened to me."
     },
     {
-        question: "What's my go-to comfort food?",
-        options: ["Pizza", "Ramen", "Ice cream", "Fried chicken"],
+        question: "What food do I love getting with you?",
+        options: ["KBBQ", "Ramen", "Pasta", "Sushi"],
         answer: 1,
-        note: ""
+        note: "Gotta collect points!"
     },
     {
-        question: "What do I do first when I'm nervous?",
-        options: ["Go quiet", "Make jokes", "Pace around", "Call you"],
-        answer: 3,
-        note: "You're my safe place."
+        question: "What embarrassing thing happened on our first date?",
+        options: ["Spilled my drink", "Stuttered", "Sweaty hands", "Blushed too hard"],
+        answer: 2,
+        note: "Don't laugh!"
     },
     {
         question: "What's the first thing I noticed about you?",
         options: ["Your smile", "Your laugh", "Your eyes", "Your kindness"],
-        answer: 0,
+        answer: 2,
         note: "And I still can't get over it."
-    }
+    },
+    {
+        question: "What game did I reach my highest rank in?",
+        options: ["Fortnite", "Valorant", "Overwatch", "League"],
+        answer: 0,
+        note: "A trick question!!."
+    },
+    {
+        question: "Which of these sports did I never play?",
+        options: ["Golf", "Soccer", "Hockey", "Track and Field"],
+        answer: 2,
+        note: "Another tricky question!!."
+    },
+    {
+        question: "How many years of cooking classes did I take?",
+        options: ["1 year", "2 years", "3 years", "4 years"],
+        answer: 2,
+        note: "Am I like Gordon Ramsey!"
+    },
 ];
 
 // Messages shown at the end, depending on her score
