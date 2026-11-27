@@ -717,3 +717,193 @@ if (
     musicRenderPlaylist();
 }
 
+/* =========================================================
+   HOW WELL DO YOU KNOW ME?
+========================================================= */
+
+// Edit these with your own questions ♡
+// "answer" is the position of the correct option, starting from 0
+// (0 = first option, 1 = second, 2 = third, 3 = fourth).
+// "note" is an optional cute message shown after she answers.
+const questions = [
+    {
+        question: "What's my favourite colour?",
+        options: ["Purple", "Blue", "Green", "Red"],
+        answer: 0,
+        note: "Obviously. It's been your colour too."
+    },
+    {
+        question: "Where did we first meet?",
+        options: ["School", "Online", "Through friends", "A cafe"],
+        answer: 1,
+        note: "The best thing that ever happened to me."
+    },
+    {
+        question: "What's my go-to comfort food?",
+        options: ["Pizza", "Ramen", "Ice cream", "Fried chicken"],
+        answer: 1,
+        note: ""
+    },
+    {
+        question: "What do I do first when I'm nervous?",
+        options: ["Go quiet", "Make jokes", "Pace around", "Call you"],
+        answer: 3,
+        note: "You're my safe place."
+    },
+    {
+        question: "What's the first thing I noticed about you?",
+        options: ["Your smile", "Your laugh", "Your eyes", "Your kindness"],
+        answer: 0,
+        note: "And I still can't get over it."
+    }
+];
+
+// Messages shown at the end, depending on her score
+const results = {
+    perfect: "A perfect score! You know me better than anyone. I love you so much ♡",
+    good: "So close! You know me really well, and I love you even more for it ♡",
+    low: "Okay, we have some catching up to do. Good thing we have forever ♡"
+};
+
+(function () {
+
+    const playBox = document.getElementById("quizPlay");
+
+    if (!playBox) {
+        return;
+    }
+
+    const resultBox = document.getElementById("quizResult");
+    const bar = document.getElementById("quizBar");
+    const countEl = document.getElementById("quizCount");
+    const questionEl = document.getElementById("quizQuestion");
+    const optionsEl = document.getElementById("quizOptions");
+    const feedbackEl = document.getElementById("quizFeedback");
+    const nextButton = document.getElementById("quizNext");
+    const scoreEl = document.getElementById("quizScore");
+    const messageEl = document.getElementById("quizMessage");
+    const restartButton = document.getElementById("quizRestart");
+
+    let current = 0;
+    let score = 0;
+
+    function showQuestion() {
+
+        const q = questions[current];
+
+        countEl.textContent = "Question " + (current + 1) + " of " + questions.length;
+        bar.style.width = (current / questions.length) * 100 + "%";
+        questionEl.textContent = q.question;
+        feedbackEl.textContent = "";
+        nextButton.classList.add("hidden");
+        optionsEl.innerHTML = "";
+
+        q.options.forEach(function (text, i) {
+
+            const button = document.createElement("button");
+
+            button.type = "button";
+            button.className = "quiz-option";
+            button.textContent = text;
+
+            button.addEventListener("click", function () {
+                answer(i);
+            });
+
+            optionsEl.appendChild(button);
+
+        });
+
+    }
+
+    function answer(chosen) {
+
+        const q = questions[current];
+        const buttons = optionsEl.querySelectorAll(".quiz-option");
+
+        buttons.forEach(function (button, i) {
+
+            button.disabled = true;
+
+            if (i === q.answer) {
+                button.classList.add("correct");
+            } else if (i === chosen) {
+                button.classList.add("wrong");
+            }
+
+        });
+
+        if (chosen === q.answer) {
+
+            score++;
+
+            feedbackEl.textContent = "Correct! ♡ " + (q.note || "");
+
+        } else {
+
+            feedbackEl.textContent =
+                "Not quite... it was " + q.options[q.answer] + ". " + (q.note || "");
+
+        }
+
+        nextButton.textContent =
+            current === questions.length - 1 ? "See results ♡" : "Next →";
+
+        nextButton.classList.remove("hidden");
+
+    }
+
+    function showResult() {
+
+        playBox.classList.add("hidden");
+        resultBox.classList.remove("hidden");
+
+        scoreEl.textContent = score + " / " + questions.length;
+
+        if (score === questions.length) {
+
+            messageEl.textContent = results.perfect;
+
+            if (typeof createConfetti === "function") {
+                createConfetti();
+            }
+
+        } else if (score >= questions.length / 2) {
+
+            messageEl.textContent = results.good;
+
+        } else {
+
+            messageEl.textContent = results.low;
+
+        }
+
+    }
+
+    nextButton.addEventListener("click", function () {
+
+        current++;
+
+        if (current < questions.length) {
+            showQuestion();
+        } else {
+            showResult();
+        }
+
+    });
+
+    restartButton.addEventListener("click", function () {
+
+        current = 0;
+        score = 0;
+
+        resultBox.classList.add("hidden");
+        playBox.classList.remove("hidden");
+
+        showQuestion();
+
+    });
+
+    showQuestion();
+
+})();
